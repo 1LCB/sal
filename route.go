@@ -69,6 +69,9 @@ func makeEndpoint(route, method, tag string, resp Response, body any, headers []
 	return endpoint
 }
 
+// addRoute registers a route with the specified HTTP method, endpoint, and handler function. 
+// It also applies any middlewares defined for the router to the handler and adds logging functionality.
+// This function is responsible for associating a route with its handler and adding it to the HTTP server.
 func (r *router) addRoute(method, endpoint string, salHandler SalHandlerFunc) {
 	if r.middlewares != nil {
 		for _, middleware := range r.middlewares {

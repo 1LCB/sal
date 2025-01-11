@@ -24,6 +24,7 @@ func NewRouter(prefix, tag string) *router {
 	}
 }
 
+// UseMiddleware adds a middleware to the router. The middleware will be applied to all routes.
 func (r *router) UseMiddleware(m Middleware) {
 	if m == nil{
 		return
@@ -32,6 +33,7 @@ func (r *router) UseMiddleware(m Middleware) {
 	r.middlewares = append(r.middlewares, m)
 }
 
+// UseHeader adds a required or optional header for the routes in the router.
 func (r *router) UseHeader(name string, required bool) {
 	r.headers = append(r.headers, Header{Name: name, Required: required})
 }
